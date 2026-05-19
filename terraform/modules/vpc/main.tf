@@ -53,7 +53,7 @@ resource "aws_eip" "nat" {
 
 resource "aws_nat_gateway" "this" {
   allocation_id = aws_eip.nat.id
-  subnet_id     = aws_subnet.private[0].id
+  subnet_id     = aws_subnet.public[0].id
   tags          = { Name = "lks-nat-gw" }
 }
 
@@ -97,3 +97,4 @@ resource "aws_route_table_association" "isolated" {
   subnet_id      = aws_subnet.isolated[count.index].id
   route_table_id = aws_route_table.isolated.id
 }
+

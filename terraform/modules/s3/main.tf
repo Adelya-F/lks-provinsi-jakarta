@@ -22,7 +22,7 @@ resource "aws_s3_bucket" "tfstate" {
 
 resource "aws_s3_bucket_versioning" "tfstate" {
   bucket = aws_s3_bucket.tfstate.id
-  versioning_configuration { status = "Suspended" }
+  versioning_configuration { status = "Enabled" }
 }
 
 resource "aws_s3_bucket_lifecycle_configuration" "tfstate" {
@@ -68,7 +68,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "assets" {
 
   rule {
     id     = "expire-old-assets"
-    status = "Disabled"
+    status = "Enabled"
 
     transition {
       days          = 30
@@ -76,7 +76,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "assets" {
     }
 
     expiration {
-      days = 90
+      days = 365
     }
 
     noncurrent_version_expiration {
