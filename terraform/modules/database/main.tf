@@ -119,7 +119,6 @@ resource "aws_ssm_parameter" "db_host" {
   type      = "String"
   value     = aws_db_instance.this.address
   overwrite = true
-  tags      = { Name = "lks-ssm-db-host" }
 }
 
 resource "aws_ssm_parameter" "db_password" {
@@ -127,7 +126,6 @@ resource "aws_ssm_parameter" "db_password" {
   type      = "SecureString"
   value     = var.db_password
   overwrite = true
-  tags      = { Name = "lks-ssm-db-password" }
 }
 
 resource "aws_ssm_parameter" "sqs_url" {
@@ -135,7 +133,6 @@ resource "aws_ssm_parameter" "sqs_url" {
   type      = "String"
   value     = aws_sqs_queue.this.url
   overwrite = true
-  tags      = { Name = "lks-ssm-sqs-url" }
 }
 
 resource "aws_ssm_parameter" "dynamo_table" {
@@ -143,5 +140,4 @@ resource "aws_ssm_parameter" "dynamo_table" {
   type      = "String"
   value     = aws_dynamodb_table.sessions.name
   overwrite = true
-  tags      = { Name = "lks-ssm-dynamo-table" }
 }
